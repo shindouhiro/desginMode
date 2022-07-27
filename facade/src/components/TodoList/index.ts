@@ -1,3 +1,4 @@
+import { IListOptions } from "./../Subs/List";
 import Input, { IInputOptions } from "../Subs/input";
 import List from "../Subs/List";
 import { ITodoData } from "./../../typings/index";
@@ -25,11 +26,15 @@ class TodoList {
             placeholderText: "请输入",
             buttonText: "增加",
         });
-        this.list = new List();
+        this.list = new List(<IListOptions>{
+            wrapperEl: this.todoWrap,
+            todoData: this.todoData,
+        });
     }
 
     private render() {
         this.input.render();
+        this.list.render();
         this.el.appendChild(this.todoWrap);
     }
 
