@@ -11,9 +11,9 @@ abstract class Component {
 			 </div>
 		`;
     }
-    protected static listView(todoList: ITodoData[]): string {
+    public static listView(todoList: ITodoData[]): string {
         return `
-		<div>
+		<div class="todo-list">
 		${
             todoList.length
                 ? todoList.map((todo: ITodoData) => {
@@ -27,14 +27,14 @@ abstract class Component {
             .join("");
     }
 
-    protected static todoView(todo: ITodoData): string {
+    public static todoView(todo: ITodoData): string {
         const { id, content, completed } = todo;
         return `
-	        <div>	
+	        <div class="todo-item">	
 			  <input type="checkbox" data-id="${id}" ${completed ? "checked" : ""} />
 			  <span style="text-decoration: ${
                   completed ? "line-through" : ""
-              }">${content}</span>
+              }" >${content}</span>
 			  <button data-id="${id}"> 删除</button>
 			</div>
 		`;
